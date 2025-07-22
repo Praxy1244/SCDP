@@ -1,0 +1,5 @@
+[
+  { "id": 1, "name": "GreenEarth NGO", "city": "Bangalore", "contact": "9876543210" },
+  { "id": 2, "name": "Helping Hands", "city": "Mysore", "contact": "9876501234" },
+  { "id": 3, "name": "Rewear Foundation", "city": "Shimoga", "contact": "9988776655" }
+]
