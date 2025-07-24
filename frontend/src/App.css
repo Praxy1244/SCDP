@@ -1,0 +1,80 @@
+/* Make sure body takes full width & height */
+body, html, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  text-align: center;
+}
+
+/* For any section we want centered */
+.container-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 80vh;
+  width: 100%;
+}
+
+/* Force Bootstrap .container to center content */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center !important;
+  justify-content: center;
+  text-align: center;
+}
+/* Navbar Container */
+.navbar {
+  background: linear-gradient(90deg, #1d2671, #c33764);
+  padding: 10px 20px;
+  border-bottom: 2px solid #eaeaea;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+/* Navbar Brand */
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff !important;
+  letter-spacing: 1px;
+}
+
+/* Navbar Links */
+.navbar-nav .nav-link {
+  color: #dddddd !important;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: #00d1b2 !important; /* Teal highlight on hover/active */
+}
+
+/* Navbar Toggle (Mobile) */
+.navbar-toggler {
+  border: none;
+  outline: none;
+}
+
+/* Center Navbar Items in Desktop Mode */
+@media (min-width: 992px) {
+  .navbar-nav {
+  max-width: 1200px;
+  margin: auto;
+}
+}
