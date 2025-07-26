@@ -132,7 +132,9 @@ const handleDelete = async () => {
             value={editDonation.status}
             onChange={(e) => setEditDonation({ ...editDonation, status: e.target.value })}
           >
-          
+            <option>Submitted</option>
+            <option>Approved</option>
+            <option>Rejected</option>
           </select>
         </div>
         <div className="modal-footer">
