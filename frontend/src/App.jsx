@@ -6,6 +6,7 @@ import AdminDonations from "./pages/AdminDonations";
 import './App.css';
 import AdminStats from "./pages/AdminStats";
 import NgoManagement from "./pages/NgoManagement";
+import Home from "./pages/Home";
 
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<h1 className="text-center mt-5">Welcome to SCDP POC</h1>} />
+        <Route path="/" element={<Home />} />
         <Route path="/donate" element={<DonateForm />} />
         <Route path="/ngos" element={<NgoList />} />
         <Route path="/admin/donations" element={<AdminDonations />} />

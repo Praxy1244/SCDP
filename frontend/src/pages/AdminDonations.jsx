@@ -112,6 +112,15 @@ const handleDelete = async () => {
   <button className="btn btn-sm btn-warning" onClick={() => openEditModal(donation)}>Edit</button>
   <button className="btn btn-sm btn-danger" onClick={() => openDeleteModal(donation._id)}>Delete</button>
 </div>
+
+              </div>
+            </div>
+          ))
+        ) : (
+          <p className="text-center mt-3 text-muted">No donations found.</p>
+        )}
+      </div>
+
 {editDonation && (
   <div className="modal show d-block" tabIndex="-1">
     <div className="modal-dialog">
@@ -165,14 +174,6 @@ const handleDelete = async () => {
   </div>
 )}
 
-
-              </div>
-            </div>
-          ))
-        ) : (
-          <p className="text-center mt-3 text-muted">No donations found.</p>
-        )}
-      </div>
 
       {/* Pagination Controls */}
       {totalPages > 1 && (

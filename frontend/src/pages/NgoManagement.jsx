@@ -5,6 +5,9 @@ export default function NgoManagement() {
   const [ngos, setNgos] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [newNgo, setNewNgo] = useState({ name: "", city: "", contact: "" });
+const [showAddModal, setShowAddModal] = useState(false);
+
   const recordsPerPage = 5;
 
   const [editNgo, setEditNgo] = useState(null);
@@ -59,10 +62,29 @@ export default function NgoManagement() {
     fetchNgos();
     closeDeleteModal();
   };
+  
+  const handleAddNgo = async () => {
+  try {
+    await axios.post("http://localhost:5000/api/ngos", newNgo);
+    fetchNgos(); // refresh the list
+    setShowAddModal(false);
+    setNewNgo({ name: "", city: "", contact: "" }); // reset form
+  } catch (error) {
+    console.error("Failed to add NGO:", error);
+  }
+};
+
 
   return (
     <div className="container mt-5">
       <h2 className="text-center text-success">Admin - NGO Management</h2>
+
+      <div className="text-center mb-3">
+  <button className="btn btn-success" onClick={() => setShowAddModal(true)}>
+    + Add NGO
+  </button>
+</div>
+
 
       {/* Search Input */}
       <div className="row mt-3 mb-3">
@@ -155,6 +177,47 @@ export default function NgoManagement() {
                   </div>
                 </div>
               )}
+
+              {showAddModal && (
+  <div className="modal show d-block" tabIndex="-1">
+    <div className="modal-dialog">
+      <div className="modal-content">
+        <div className="modal-header">
+          <h5 className="modal-title">Add New NGO</h5>
+          <button type="button" className="btn-close" onClick={() => setShowAddModal(false)}></button>
+        </div>
+        <div className="modal-body">
+          <input
+            type="text"
+            className="form-control mb-2"
+            placeholder="Name"
+            value={newNgo.name}
+            onChange={(e) => setNewNgo({ ...newNgo, name: e.target.value })}
+          />
+          <input
+            type="text"
+            className="form-control mb-2"
+            placeholder="City"
+            value={newNgo.city}
+            onChange={(e) => setNewNgo({ ...newNgo, city: e.target.value })}
+          />
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Contact"
+            value={newNgo.contact}
+            onChange={(e) => setNewNgo({ ...newNgo, contact: e.target.value })}
+          />
+        </div>
+        <div className="modal-footer">
+          <button className="btn btn-secondary" onClick={() => setShowAddModal(false)}>Cancel</button>
+          <button className="btn btn-primary" onClick={handleAddNgo}>Add NGO</button>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
             </div>
           ))
         ) : (
