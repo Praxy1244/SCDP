@@ -18,7 +18,7 @@ const [showAddModal, setShowAddModal] = useState(false);
   }, []);
 
   const fetchNgos = () => {
-    axios.get("http://localhost:5000/api/ngos")
+    axios.get(`${import.meta.env.VITE_API_URL}/api/ngos`)
       .then(res => setNgos(res.data))
       .catch(err => console.error(err));
   };
@@ -52,20 +52,20 @@ const [showAddModal, setShowAddModal] = useState(false);
   const closeDeleteModal = () => setDeleteId(null);
 
   const handleUpdate = async () => {
-    await axios.put(`http://localhost:5000/api/ngos/${editNgo._id}`, editNgo);
+    await axios.put(`${import.meta.env.VITE_API_URL}/api/ngos/${editNgo._id}`, editNgo);
     fetchNgos();
     closeEditModal();
   };
 
   const handleDelete = async () => {
-    await axios.delete(`http://localhost:5000/api/ngos/${deleteId}`);
+    await axios.delete(`${import.meta.env.VITE_API_URL}/api/ngos/${deleteId}`);
     fetchNgos();
     closeDeleteModal();
   };
   
   const handleAddNgo = async () => {
   try {
-    await axios.post("http://localhost:5000/api/ngos", newNgo);
+    await axios.post(`${import.meta.env.VITE_API_URL}/api/ngos`, newNgo);
     fetchNgos(); // refresh the list
     setShowAddModal(false);
     setNewNgo({ name: "", city: "", contact: "" }); // reset form

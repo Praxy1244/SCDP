@@ -8,7 +8,7 @@ export default function AdminStats() {
   const [stats, setStats] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/ngo-stats")
+    axios.get(`${import.meta.env.VITE_API_URL}/api/ngo-stats`)
       .then(res => setStats(res.data))
       .catch(err => console.error(err));
   }, []);

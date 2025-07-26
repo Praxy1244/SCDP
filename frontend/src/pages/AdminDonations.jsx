@@ -18,7 +18,7 @@ const [deleteId, setDeleteId] = useState(null);
   }, []);
 
   const fetchDonations = () => {
-    axios.get("http://localhost:5000/api/donations")
+    axios.get(`${import.meta.env.VITE_API_URL}/api/donations`)
       .then(res => setDonations(res.data))
       .catch(err => console.error(err));
   };
@@ -55,13 +55,13 @@ const openDeleteModal = (id) => setDeleteId(id);
 const closeDeleteModal = () => setDeleteId(null);
 
 const handleUpdate = async () => {
-  await axios.put(`http://localhost:5000/api/donation/${editDonation._id}`, editDonation);
+  await axios.put(`${import.meta.env.VITE_API_URL}/api/donation/${editDonation._id}`, editDonation);
   fetchDonations();
   closeEditModal();
 };
 
 const handleDelete = async () => {
-  await axios.delete(`http://localhost:5000/api/donation/${deleteId}`);
+  await axios.delete(`${import.meta.env.VITE_API_URL}/api/donation/${deleteId}`);
   fetchDonations();
   closeDeleteModal();
 };
