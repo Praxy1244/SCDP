@@ -18,6 +18,9 @@ app.get('/', (req, res) => {
 // Routes
 app.use('/api', require('./routes/donationRoutes'));
 app.use('/api/ngos', require('./routes/ngoRoutes'));
+app.use(cors({
+  origin: 'https://scdp-9rtdfnjuk-prathiksha-p-palankars-projects.vercel.app'  // Use your actual Vercel URL here
+}));
 
 
 
